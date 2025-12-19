@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Page</title>
+    <link rel="stylesheet" href="hotel.css">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f7f7f7;
+}
+
+.main-header {
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.logo-section, .support-section, .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-section input {
+    padding: 8px 12px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 230px;
+}
+
+.search-section button {
+    padding: 8px 12px;
+    border: none;
+    background: #0077ff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 12px 0;
+    background: #003d7a;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a {
+    color:blueviolet;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a:hover{
+  background-color:#3e444b;
+  /* padding:2px; */
+}
+
+
+.column ul li::before {
+    content: "•";
+    color: #0070ff;
+    font-weight: bold;
+    padding-right:6px;
+}
+
+.hero {
+  padding: 48px 24px;
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  color: #0b2a66;
+  margin-bottom: 10px;
+}
+
+.hero-sub {
+  color: #475569;
+  font-size: 1.05rem;
+}
+
+
+.hotel-list {
+  padding: 28px 24px 60px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+  color: #0b2a66;
+}
+
+.hotel-card-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.hotel-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(12,24,40,0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.hotel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(12,24,40,0.09);
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 14px 12px 18px 12px;
+}
+
+.hotel-info h3 {
+  font-size: 1.05rem;
+  color: #0b2a66;
+  margin-bottom: 6px;
+}
+
+.hotel-info p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.price {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 700;
+} 
+
+.footer {
+  background: #0b2a66;
+  color: #fff;
+  padding: 40px 20px 20px 20px;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column {
+  flex: 1 1 220px;
+}
+
+.footer-column h3 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #f0f4ff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-column li:hover {
+  color: #a8c4ff;
+}
+
+.footer-column .select-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.footer-column .input, 
+.footer-column .language {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+/* Social list icons */
+.social-list li {
+  display: flex;
+  align-items: center;
+}
+
+.social-list .icon {
+  margin-right: 6px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+
+@media (max-width: 576px) {
+
+  .top-bar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .search-section input {
+    width: 100%;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hotel-card img {
+    height: 140px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+
+  .top-bar {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .search-section input {
+    width: 180px;
+  }
+
+  .hotel-card-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .hotel-card-box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .search-section input {
+    width: 220px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 1025px) {
+
+  .hotel-card-box {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .search-section input {
+    width: 260px;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+}
+
+
+
+    </style>
+<body>
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="logo-section">
+                <i class="fas fa-plane-departure logo-icon"></i>
+                <p class="logo-text">Your Travel World</p>
+            </div>
+            
+            <div class="support-section">
+                <i class="fas fa-headset support-icon"></i>
+                <div>
+                <p class="support-text">Support</p>
+                <p class="support-number">800-0011-2222-333</p>
+                </div>
+            </div>
+
+            <div class="search-section">
+                <input type="text" placeholder="Search on site">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="profile-section">
+                <a href="./login.html" class="log-link"><i class="fas fa-user"></i> LOG IN</a>
+                <span class="separator">|</span>
+                <a href="./signup.html" class="log-link"><i class="fa-solid fa-arrow-right-to-bracket"></i> SIGN UP</a>
+            </div>
+        </div>
+
+        <nav class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="hotel.html">Hotel</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./package.html" class="active">Packages</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-title">Find Your Perfect Hotel</h1>
+        <p class="hero-sub">Best comfort, best luxury, best memories.</p>
+    </section>
+
+    <section class="hotel-list">
+        <h2 class="section-title">Top Rated Hotels</h2>
+
+        <div class="hotel-card-box">
+
+            <div class="hotel-card">
+                <img src="./images/royal-pal.jpg" alt="Hotel Image">
+                <div class="hotel-info">
+                    <h3>Royal Palm Resort</h3>
+                    <p>📍 Maldives</p>
+                    <span class="price">From $250</span>
+                </div>
+            </div>
+
+            <div class="hotel-card">
+                <img src="./images/ocean-view thailnd" alt="Hotel Image">
+                <div class="hotel-info">
+                    <h3>Ocean View Hotel</h3>
+                    <p>📍 Thailand</p>
+                    <span class="price">From $180</span>
+                </div>
+            </div>
+
+            <div class="hotel-card">
+                <img src="./images/dubai.jpg" alt="Hotel Image">
+                <div class="hotel-info">
+                    <h3>Grand Palace Suites</h3>
+                    <p>📍 Dubai</p>
+                    <span class="price">From $320</span>
+                </div>
+            </div>
+
+            <div class="hotel-card">
+                <img src="./images/lakview.jpg" alt="Hotel Image">
+                <div class="hotel-info">
+                    <h3>Lakeview Paradise</h3>
+                    <p>📍 Switzerland</p>
+                    <span class="price">From $400</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+   <div class="footer-container">
+
+    <div class="footer-column">
+      <h3>Change your region and language</h3>
+      <div class="select-box">
+      <input type = "text" placeholder = "eg.india.." class = "input">
+      <Select class = "language"> 
+      <option>@ lang..</option>
+      <option>Tamil</option>
+      <option>English</option>
+      <option>Hindi</option>
+      <option>mallu</option>
+      </Select>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Find us on</h3>
+      <ul class="social-list">
+        <li><span class="icon"><i class="fa-brands fa-facebook"></i></span> Facebook</li>
+        <li><span class="icon"><i class="fa-brands fa-youtube"></i></span> YouTube</li>
+        <li><span class="icon"><i class="fa-brands fa-instagram"></i></span> Instagram</li>
+        <li><span class="icon"><i class="fa-brands fa-pinterest"></i></span> Pinterest</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>About this site</h3>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms and Conditions</li>
+        <li>Accessibility Statement</li>
+        <li>Sitemap</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Other sites</h3>
+      <ul>
+        <li>Media & Industry</li>
+        <li>Business Events</li>
+        <li>Tourism Investment</li>
+      </ul>
+    </div>
+    </div>
+  <div class="footer-bottom">
+    © Your world Tourism
+  </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,705 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    background: #f7f7f7;
+}
+
+.main-header {
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.logo-section, .support-section, .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-section input {
+    padding: 8px 12px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 230px;
+}
+
+.search-section button {
+    padding: 8px 12px;
+    border: none;
+    background: #0077ff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 12px 0;
+    background: #003d7a;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a {
+    color:blueviolet;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+}
+
+.bg-img {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-image: url("./images/elephant.webp"); 
+  background-size: cover;
+  background-position: center;
+}
+
+.content-box {
+  position:absolute;
+  z-index:5;
+  background-image: url(./images/log-in\ bg.webp);
+  background-clip: text;
+  color:transparent; 
+  text-align: center;
+  font-size: 24px;
+  cursor:pointer;
+  line-height: 3.8rem;
+  margin-left:40%;
+  margin-top:5%;
+}
+
+.gallery-container {
+  display:flex;
+  gap:18px;
+  padding: 20px 0;
+  overflow:hidden;
+
+}
+
+ .image-card {
+  height:200px;
+  width:300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  animation: floating 3s ease-in-out infinite;
+}
+
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); 
+  }
+  70% {
+    transform: translateY(10px); 
+  }
+}
+
+.image-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.image-card img {
+  gap: 20px;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.06);
+}
+
+.card-title {
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+  color: #0b3d91;
+}
+
+.next-content {
+  padding: 40px;
+}
+
+.packages-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.column h3 {
+    margin-bottom: 10px;
+    margin-left:5px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.column ul li {
+    margin: 4px 0;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.column ul li::before {
+    content: "•";
+    color: #0070ff;
+    font-weight: bold;
+    padding:10px;
+}
+
+.view-btn {
+    background:#ffcc00;
+    border: none;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.view-btn:hover {
+    background: #e6b800;
+}
+
+.footer {
+  background: #0b2a66;
+  color: #fff;
+  padding: 40px 20px 20px 20px;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column {
+  flex: 1 1 220px;
+}
+
+.footer-column h3 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #f0f4ff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-column li:hover {
+  color: #a8c4ff;
+}
+
+.footer-column .select-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.footer-column .input, 
+.footer-column .language {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.social-list li {
+  display: flex;
+  align-items: center;
+}
+
+.social-list .icon {
+  margin-right: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+/* 📱 MOBILE VIEW (0–480px) */
+@media (max-width: 480px) {
+
+  .top-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .logo-section, .support-section, .profile-section {
+    justify-content: center;
+  }
+
+  .search-section {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .search-section input {
+    width: 90%;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .bg-img {
+    height: 200px;
+  }
+
+  .content-box {
+    font-size: 18px;
+    margin-left: 5%;
+    margin-top: 5%;
+    line-height: 2.5rem;
+  }
+
+  .gallery-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .image-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .packages-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-column {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 📲 LARGE MOBILE / SMALL TABLET (481–768px) */
+@media (max-width: 768px) {
+
+  .search-section input {
+    width: 200px;
+  }
+
+  .bg-img {
+    height: 250px;
+  }
+
+  .content-box {
+    font-size: 20px;
+    margin-left: 10%;
+    line-height: 3rem;
+  }
+
+  .gallery-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow: visible;
+  }
+
+  .image-card {
+    width: 48%;
+  }
+
+  .packages-container .column{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* 💻 TABLET / SMALL LAPTOP (769–1024px) */
+@media (max-width: 1024px) {
+
+  .gallery-container {
+    gap: 18px;
+  }
+
+  .image-card {
+    width: 30%;
+  }
+
+  .packages-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 🖥️ DESKTOP VIEW (1025–1440px) */
+@media (max-width: 1440px) {
+
+  .packages-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .image-card {
+    width: 220px;
+  }
+}
+
+/* 🍎 LARGE DESKTOP (1441px +) */
+@media (min-width: 1441px) {
+  .packages-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+
+</style>
+<body>
+
+        <nav class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="hotel.html">Hotel</a>
+            <a href="./about.html">About</a>
+            <a href="./contact.html">Contact</a>
+            <a href="./package.html" class="active">Packages</a>
+        </nav>
+        <div class = "container">
+        <div class = "bg-img">
+            <div class="content-box">
+                <p style = "font-size:3rem; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Your best trip</p>
+                <p style = "color:rgb(125, 7, 7); font-size:2rem; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Popular Packages</p>
+                <p style = "font-size:1rem;color:white">Have a Best Journey</p>
+            </div>
+        </div>
+        <div class = "gallery-container">
+            <div class="image-card">
+            <img src="./images/indonesia-culture.avif" alt="indonesia-culture">
+            <div class="card-title">Indonesia-culture</div>
+        </div>
+
+        <div class="image-card">
+            <img src="./images/marsol-culture.jpg" alt="marsol-culture">
+            <div class="card-title">Marsol-culture</div>
+        </div>
+
+        <div class="image-card">
+            <img src="./images/thailand culter.jpeg" alt="thailand culter">
+            <div class="card-title">Thailand culter</div>
+        </div>
+
+        <div class="image-card">
+            <img src="./images/great wall-china.avif" alt="makronissos-beach">
+            <div class="card-title">Great wall-china</div>
+        </div>
+
+        <div class="image-card">
+            <img src="./images/Machu_Picchu,_Peru.jpg" alt="makronissos-beach">
+            <div class="card-title">Machu_Picchu,_Peru</div>
+        </div>
+
+        <div class="image-card">
+            <img src="./images/Australian-Culture.png" alt="makronissos-beach">
+            <div class="card-title">Australia</div>
+        </div>
+      </div>
+
+
+        <div class = "next-content">
+    <div class="packages-container">
+    <div class="column">
+        <h3>Africa</h3>
+        <ul>
+            <li>Kenya</li>
+            <li>Morocco</li>
+            <li>Seychelles</li>
+            <li>South Africa</li>
+            <li>Zimbabwe</li>
+            <li>Tanzania</li>
+        </ul>
+
+        <h3>America</h3>
+        <ul>
+            <li>Alaska</li>
+            <li>Canada</li>
+            <li>Central America</li>
+            <li>North America</li>
+            <li>South America</li>
+            <li>USA</li>
+        </ul>
+
+        <h3>Pacific</h3>
+        <ul>
+            <li>Australia</li>
+            <li>Fiji</li>
+            <li>New Zealand</li>
+        </ul>
+    </div>
+
+    <div class="column">
+        <h3>Asia</h3>
+        <ul>
+            <li>Bali</li>
+            <li>Cambodia</li>
+            <li>China</li>
+            <li>Hong Kong</li>
+            <li>Japan</li>
+            <li>Indonesia</li>
+            <li>Kazakhstan</li>
+            <li>Russia</li>
+            <li>South Korea</li>
+            <li>Malaysia</li>
+            <li>Singapore</li>
+            <li>Philippines</li>
+            <li>Taiwan</li>
+            <li>Thailand</li>
+            <li>Vietnam</li>
+            <li>Uzbekistan</li>
+        </ul>
+    </div>
+
+    <div class="column">
+        <h3>Europe</h3>
+        <ul>
+            <li>Austria</li>
+            <li>Belgium</li>
+            <li>Bulgaria</li>
+            <li>Croatia</li>
+            <li>Czech Republic</li>
+            <li>Denmark Republic</li>
+            <li>Finland Republic</li>
+            <li>France</li>
+            <li>Germany</li>
+            <li>Greece</li>
+            <li>Greenland</li>
+            <li>Hungary</li>
+            <li>Iceland</li>
+            <li>Ireland</li>
+            <li>Italy</li>
+            <li>London</li>
+            <li>Netherlands</li>
+            <li>Norway</li>
+            <li>Portugal</li>
+            <li>Romania</li>
+            <li>Russia</li>
+            <li>Slovakia</li>
+            <li>Spain</li>
+            <li>Sweden</li>
+            <li>Switzerland</li>
+            <li>Turkey</li>
+            <li>United Kingdom</li>
+        </ul>
+    </div>
+
+    <div class="column">
+        <h3>Island</h3>
+        <ul>
+            <li>Madagascar</li>
+            <li>Maldives</li>
+            <li>Mauritius</li>
+            <li>Reunion</li>
+            <li>Sri Lanka</li>
+        </ul>
+
+        <h3>Middle East</h3>
+        <ul>
+            <li>Israel</li>
+            <li>Jordan</li>
+            <li>Oman</li>
+            <li>Qatar</li>
+            <li>UAE</li>
+            <li>Dubai</li>
+            <li>Egypt</li>
+        </ul>
+
+        <h3>Cruises</h3>
+        <ul>
+            <li>Cordelia Cruises</li>
+        </ul>
+    </div>
+
+    <div class="column">
+        <h3>Honeymoon</h3>
+        <ul>
+            <li>Maldives</li>
+            <li>Bali</li>
+            <li>Mauritius</li>
+            <li>Phuket</li>
+            <li>Switzerland</li>
+            <li>Seychelles</li>
+            <li>Langkawi</li>
+            <li>Paris</li>
+            <li>Italy</li>
+            <li>Krabi</li>
+            <li>Greece</li>
+            <li>Thailand</li>
+            <li>Dubai</li>
+            <li>Sri Lanka</li>
+            <li>Singapore</li>
+            <li>Malaysia</li>
+            <li>Croatia</li>
+            <li>South Africa</li>
+            <li>Koh Samui</li>
+            <li>Australia</li>
+            <li>Spain</li>
+            <li>Europe</li>
+        </ul>
+
+        <button class="view-btn">View All Packages</button>
+    </div>
+
+</div>
+</div>
+</div>
+
+ <footer class="footer">
+   <div class="footer-container">
+
+    <div class="footer-column">
+      <h3>Change your region and language</h3>
+      <div class="select-box">
+      <input type = "text" placeholder = "eg.india.." class = "input">
+      <Select class = "language"> 
+      <option>@ lang..</option>
+      <option>Tamil</option>
+      <option>English</option>
+      <option>Hindi</option>
+      <option>mallu</option>
+      </Select>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Find us on</h3>
+      <ul class="social-list">
+        <li><span class="icon"><i class="fa-brands fa-facebook"></i></span> Facebook</li>
+        <li><span class="icon"><i class="fa-brands fa-youtube"></i></span> YouTube</li>
+        <li><span class="icon"><i class="fa-brands fa-instagram"></i></span> Instagram</li>
+        <li><span class="icon"><i class="fa-brands fa-pinterest"></i></span> Pinterest</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>About this site</h3>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms and Conditions</li>
+        <li>Accessibility Statement</li>
+        <li>Sitemap</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Other sites</h3>
+      <ul>
+        <li>Media & Industry</li>
+        <li>Business Events</li>
+        <li>Tourism Investment</li>
+      </ul>
+    </div>
+
+  <div class="footer-bottom">
+    © Your world Tourism
+  </div>
+</div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
